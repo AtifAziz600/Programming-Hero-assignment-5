@@ -43,7 +43,6 @@ export default function GearDetailPage() {
   // Live total price
   const totalPrice = gear ? getDurationInDays() * gear.pricePerDay * quantity : 0;
 
-  // Book order mutation
   const bookingMutation = useMutation({
     mutationFn: async () => {
       if (!startDate || !endDate) throw new Error("Please select start and end dates");
