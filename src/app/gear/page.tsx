@@ -10,7 +10,7 @@ import { Category } from "@/types";
 
 // Individual Gear Listing Card
 function GearCard({ item }: { item: { id: string; name: string; brand: string; description: string; category?: { name: string }; pricePerDay: number; isAvailable: boolean; stock: number } }) {
-  return (
+  return (   
     <div className="bg-quaternary border border-slate-200 rounded-xl overflow-hidden hover:shadow-md transition-all flex flex-col h-full">
       <div className="bg-slate-100 h-48 w-full relative flex items-center justify-center overflow-hidden">
         <span className="text-slate-350 text-xs font-semibold uppercase tracking-wider">{item.brand}</span>
