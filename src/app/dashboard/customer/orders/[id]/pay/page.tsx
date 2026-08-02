@@ -25,12 +25,12 @@ export default function CustomerOrderPayPage() {
 
   const payMutation = useMutation({
     mutationFn: async () => {
-      const response = await axiosInstance.post("/payments/create", { rentalId: id });
+      const response = await axiosInstance.post("/payments/create", { rentalOrderId: id, method: "STRIPE" });
       return response.data?.success ? response.data.data : response.data;
     },
     onSuccess: (data) => {
-      if (data?.checkoutUrl || data?.url) {
-        window.location.href = data.checkoutUrl || data.url;
+      if (data?.redirectUrl) {
+        window.location.href = data.redirectUrl;
       } else if (data?.success) {
         toast.success("Payment initiated! Redirecting...");
         setTimeout(() => {
