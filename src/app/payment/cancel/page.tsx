@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/Button";
 function CancelContent() {
   const searchParams = useSearchParams();
   const rentalId = searchParams.get("rentalId");
-
+     
   return (
     <div className="flex-grow flex items-center justify-center py-16 px-4 bg-quaternary-light">
       <div className="max-w-md w-full text-center space-y-6">
