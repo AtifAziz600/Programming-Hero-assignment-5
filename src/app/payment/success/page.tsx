@@ -31,7 +31,7 @@ function SuccessContent() {
     </div>
   );
 }
-
+    
 export default function PaymentSuccessPage() {
   return (
     <Suspense fallback={<div className="flex-grow flex items-center justify-center"><div className="h-8 w-8 border-4 border-primary border-t-transparent rounded-full animate-spin" /></div>}>
