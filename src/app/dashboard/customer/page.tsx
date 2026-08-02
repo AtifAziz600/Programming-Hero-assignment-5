@@ -27,7 +27,7 @@ export default function CustomerDashboardPage() {
   const rentals = rentalsData as Rental[];
   const totalRentals = rentals.length;
   const activeRentals = rentals.filter((r: Rental) => ["PLACED", "CONFIRMED", "PAID", "PICKED_UP"].includes(r.status)).length;
-  const totalSpent = rentals.reduce((sum: number, r: Rental) => sum + (r.totalAmount || 0), 0);
+  const totalSpent = rentals.reduce((sum: number, r: Rental) => sum + Number(r.totalAmount || 0), 0);
 
   if (error) {
     return (
@@ -119,7 +119,7 @@ export default function CustomerDashboardPage() {
                         {new Date(rental.startDate).toLocaleDateString()} - {new Date(rental.endDate).toLocaleDateString()}
                       </TableCell>
                       <TableCell>{rental.items?.length || 0} items</TableCell>
-                      <TableCell className="font-bold">${rental.totalAmount?.toFixed(2)}</TableCell>
+                      <TableCell className="font-bold">${Number(rental.totalAmount || 0).toFixed(2)}</TableCell>
                       <TableCell>
                         <Badge variant={rental.status}>{rental.status}</Badge>
                       </TableCell>
