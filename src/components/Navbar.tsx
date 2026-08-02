@@ -9,7 +9,7 @@ import { Menu, X, LogOut, LayoutDashboard, Dumbbell } from "lucide-react";
 export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
-  const { user, logout } = useAuthStore();
+  const { user, logout, mounted } = useAuthStore();
   const [isOpen, setIsOpen] = useState(false);
 
   const handleLogout = () => {
@@ -60,7 +60,7 @@ export default function Navbar() {
 
           {/* Right Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            {user ? (
+            {mounted && user ? (
               <div className="flex items-center space-x-4">
                 <Link
                   href={getDashboardPath(user.role)}
@@ -135,7 +135,7 @@ export default function Navbar() {
             >
               Browse Gear
             </Link>
-            {user && (
+            {mounted && user && (
               <Link
                 href={getDashboardPath(user.role)}
                 onClick={() => setIsOpen(false)}
@@ -151,7 +151,7 @@ export default function Navbar() {
           </div>
 
           <div className="pt-4 pb-4 border-t border-slate-200 px-4">
-            {user ? (
+            {mounted && user ? (
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-3">
                   <div className="h-9 w-9 rounded-full bg-primary-100 flex items-center justify-center text-primary font-bold">

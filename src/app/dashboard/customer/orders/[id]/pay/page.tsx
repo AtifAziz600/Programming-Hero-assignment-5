@@ -114,7 +114,7 @@ export default function CustomerOrderPayPage() {
               <DollarSign className="h-5 w-5 text-primary" />
               <span className="font-bold">Total Amount</span>
             </div>
-            <span className="text-2xl font-extrabold text-primary">${rental.totalAmount?.toFixed(2)}</span>
+            <span className="text-2xl font-extrabold text-primary">${Number(rental.totalAmount || 0).toFixed(2)}</span>
           </div>
 
           <div className="flex gap-3 pt-2">

@@ -13,30 +13,48 @@ interface AuthState {
   token: string | null;
   user: User | null;
   isLoading: boolean;
+  mounted: boolean;
   login: (token: string, user: User) => void;
   logout: () => void;
   checkAuth: () => Promise<void>;
+  setMounted: (mounted: boolean) => void;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
-  token: typeof window !== "undefined" ? localStorage.getItem("accessToken") : null,
-  user: typeof window !== "undefined" ? JSON.parse(localStorage.getItem("user") || "null") : null,
-  isLoading: true,
+  token: null,
+  user: null,
+  isLoading: false,
+  mounted: false,
 
   login: (token, user) => {
     localStorage.setItem("accessToken", token);
     localStorage.setItem("user", JSON.stringify(user));
-    // Set cookie for middleware access
     document.cookie = `accessToken=${token}; path=/; max-age=604800; SameSite=Lax`;
-    set({ token, user, isLoading: false });
+    set({ token, user });
   },
 
   logout: () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("user");
-    // Clear cookie
     document.cookie = "accessToken=; path=/; max-age=0; SameSite=Lax";
-    set({ token: null, user: null, isLoading: false });
+    set({ token: null, user: null });
+  },
+
+  setMounted: (mounted: boolean) => {
+    if (mounted && typeof window !== "undefined") {
+      const token = localStorage.getItem("accessToken");
+      const storedUser = localStorage.getItem("user");
+      if (token && storedUser) {
+        set({
+          mounted: true,
+          token,
+          user: JSON.parse(storedUser) as User,
+          isLoading: false,
+        });
+        return;
+      }
+    }
+    set({ mounted, isLoading: false });
   },
 
   checkAuth: async () => {

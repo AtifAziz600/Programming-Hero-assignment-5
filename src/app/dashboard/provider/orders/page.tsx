@@ -125,7 +125,7 @@ export default function ProviderOrdersPage() {
                       {new Date(order.startDate).toLocaleDateString()} - {new Date(order.endDate).toLocaleDateString()}
                     </TableCell>
                     <TableCell>{order.items?.length || 0} items</TableCell>
-                    <TableCell className="font-bold">${order.totalAmount?.toFixed(2)}</TableCell>
+                    <TableCell className="font-bold">${Number(order.totalAmount || 0).toFixed(2)}</TableCell>
                     <TableCell>
                       <Badge variant={order.status}>{order.status}</Badge>
                     </TableCell>
