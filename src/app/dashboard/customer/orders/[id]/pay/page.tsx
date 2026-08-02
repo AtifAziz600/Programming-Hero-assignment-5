@@ -26,7 +26,7 @@ export default function CustomerOrderPayPage() {
   const payMutation = useMutation({
     mutationFn: async () => {
       const response = await axiosInstance.post("/payments/create", { rentalId: id });
-      return response.data;
+      return response.data?.success ? response.data.data : response.data;
     },
     onSuccess: (data) => {
       if (data?.checkoutUrl || data?.url) {

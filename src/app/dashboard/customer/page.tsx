@@ -124,7 +124,7 @@ export default function CustomerDashboardPage() {
                         <Badge variant={rental.status}>{rental.status}</Badge>
                       </TableCell>
                       <TableCell>
-                        {(rental.status === "PAID" || rental.status === "CONFIRMED") && (
+                        {(rental.status === "PLACED" || rental.status === "PAID" || rental.status === "CONFIRMED") && (
                           <Button size="sm" onClick={() => router.push(`/dashboard/customer/orders/${rental.id}/pay`)}>
                             Pay Now
                           </Button>
