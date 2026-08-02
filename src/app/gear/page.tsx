@@ -8,7 +8,6 @@ import { Search, SlidersHorizontal, RefreshCw, X, Dumbbell } from "lucide-react"
 import { useSearchParams } from "next/navigation";
 import { Category } from "@/types";
 
-// Individual Gear Listing Card
 function GearCard({ item }: { item: { id: string; name: string; brand: string; description: string; category?: { name: string }; pricePerDay: number; isAvailable: boolean; stock: number } }) {
   return (   
     <div className="bg-quaternary border border-slate-200 rounded-xl overflow-hidden hover:shadow-md transition-all flex flex-col h-full">
