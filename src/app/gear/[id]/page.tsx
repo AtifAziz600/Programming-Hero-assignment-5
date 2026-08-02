@@ -40,7 +40,6 @@ export default function GearDetailPage() {
     return diffDays > 0 ? diffDays : 1;
   };
 
-  // Live total price
   const totalPrice = gear ? getDurationInDays() * gear.pricePerDay * quantity : 0;
 
   const bookingMutation = useMutation({
