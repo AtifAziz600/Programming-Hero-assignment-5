@@ -51,7 +51,7 @@ export default function ProviderGearEditPage() {
     },
   });
   const categories = categoriesData || [];
-
+    
   const {
     register,
     handleSubmit,
