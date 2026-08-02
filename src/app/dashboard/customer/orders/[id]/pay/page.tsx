@@ -13,7 +13,7 @@ import { DollarSign, Calendar, Package } from "lucide-react";
 export default function CustomerOrderPayPage() {
   const { id } = useParams<{ id: string }>();
   const router = useRouter();
-
+     
   const { data: rental, isLoading, error } = useQuery({
     queryKey: ["rental", id],
     queryFn: async () => {
