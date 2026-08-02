@@ -11,7 +11,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/Table";
 import { Calendar, DollarSign, Package, ArrowRight } from "lucide-react";
 import toast from "react-hot-toast";
-
+    
 export default function CustomerDashboardPage() {
   const router = useRouter();
   const { user } = useAuthStore();
